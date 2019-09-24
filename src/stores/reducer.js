@@ -1,14 +1,13 @@
 import authors from "../data";
 const initialState = {
-  authors: authors,
-  newAuthorId: 5
+  authors: authors
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "ADD_AUTHOR": {
       const newAuthor = {
-        id: state.newAuthorId,
+        id: state.authors.length + 1,
         first_name: "Author",
         last_name: "McAuthorFace",
         imageUrl:
@@ -23,8 +22,7 @@ export default (state = initialState, action) => {
       const newAuthors = state.authors.concat(newAuthor);
       return {
         ...state,
-        authors: newAuthors,
-        newAuthorId: state.newAuthorId + 1
+        authors: newAuthors
       };
     }
     case "DELETE_AUTHOR": {
